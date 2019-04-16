@@ -1,5 +1,5 @@
-💬 Get Google-Reviews with PHP cURL and without API Key
-=======================================================
+💬 Get Google-Reviews with PHP cURL & without API Key
+=====================================================
 
 If you have the business open in Google Maps:
 - Do a search in Google Maps for the business name
