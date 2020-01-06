@@ -7,8 +7,8 @@
 **This is a dirty but usefull way to grab the first 8 most relevant reviews from Google with cURL and without the use of an API Key**
 
 How to find the needed CID No:
- - use: http://ryanbradley.com/tools/google-cid-finder
- - and do a search for your business name
+  - use: [http://ryanbradley.com/tools/google-cid-finder]
+  - and do a search for your business name
 
 Parameter
 ---------
