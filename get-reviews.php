@@ -56,8 +56,8 @@ function getReviews($option) {
     $reviews  = json_decode($match[1]);
     $reviews  = ltrim($reviews[3][6], ")]}'"); /* fix json */
     $reviews  = json_decode($reviews);
-    $customer = $reviews[0][1][0][14][18];
-    $reviews  = $reviews[0][1][0][14][52][0];
+    $customer = $reviews[6][18]; // NEW IN 2020
+    $reviews  = $reviews[6][52][0]; // NEW IN 2020
   }
   $return = '';
   if (isset($reviews)) {
