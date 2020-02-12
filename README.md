@@ -10,7 +10,7 @@ How to find the CID - If you have the business open in Google Maps:
 - Click CTRL+F and search the source code for “ludocid”
 - CID will be the numbers after “ludocid\\u003d” and till the last number
 
-or use this tool: https://ryanbradley.com/tools/google-cid-finder/
+or use this tool: https://pleper.com/index.php?do=tools&sdo=cid_converter
 
 Example
 -------
