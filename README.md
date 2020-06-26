@@ -27,6 +27,7 @@ $options = array(
   'show_only_if_greater_x' => 0,     // (0-4) only show reviews with more than x stars
   'show_rule_after_review' => true,  // false = don't show <hr> Tag after each review
   'show_blank_star_till_5' => true,  // false = don't show always 5 stars e.g. ⭐⭐⭐☆☆
+  'your_language_for_tran' => 'en',  // give you language for auto translate reviews
 );
 echo getReviews($options);
 
