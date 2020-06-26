@@ -7,7 +7,7 @@
 **This is a dirty but usefull way to grab the first 8 most relevant reviews from Google with cURL and without the use of an API Key**
 
 How to find the needed CID No:
-  - use: [http://ryanbradley.com/tools/google-cid-finder]
+  - use: [https://pleper.com/index.php?do=tools&sdo=cid_converter]
   - and do a search for your business name
 
 Parameter
@@ -19,6 +19,7 @@ $options = array(
   'show_only_if_greater_x' => 0,     // (0-4) only show reviews with more than x stars
   'show_rule_after_review' => true,  // false = don't show <hr> Tag after each review
   'show_blank_star_till_5' => true,  // false = don't show always 5 stars e.g. ⭐⭐⭐☆☆
+  'your_language_for_tran' => 'en',  // give you language for auto translate reviews
 );
 echo getReviews($options);
 
@@ -36,6 +37,7 @@ $options = array(
   'show_only_if_greater_x' => 0,     // (0-4) only show reviews with more than x stars
   'show_rule_after_review' => true,  // false = don't show <hr> Tag after each review
   'show_blank_star_till_5' => true,  // false = don't show always 5 stars e.g. ⭐⭐⭐☆☆
+  'your_language_for_tran' => 'en',  // give you language for auto translate reviews
 );
 /* ------------------------------------------------------------------------- */
 echo getReviews($options);
@@ -48,6 +50,7 @@ function getReviews($option) {
   curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
   curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookies.txt');
+  curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept-Language: '.$option['your_language_for_tran']));
   $result = curl_exec($ch);
   curl_close($ch);
   $pattern = '/window\.APP_INITIALIZATION_STATE(.*);window\.APP_FLAGS=/ms';
