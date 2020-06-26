@@ -4,13 +4,16 @@
 **This is a dirty but usefull way to grab the first 8 most relevant reviews from Google with cURL and without the use of an API Key**
 
 How to find the CID - If you have the business open in Google Maps:
+
+use this tool: https://pleper.com/index.php?do=tools&sdo=cid_converter
+
+or
+
 - Do a search in Google Maps for the business name
 - Make sure it’s the only result that shows up.
 - Replace http:// with view-source: in the URL
 - Click CTRL+F and search the source code for “ludocid”
-- CID will be the numbers after “ludocid\\u003d” and till the last number
-
-or use this tool: https://pleper.com/index.php?do=tools&sdo=cid_converter
+- CID is the numbers after “ludocid\\u003d” and till the last number 
 
 Example
 -------
@@ -35,4 +38,4 @@ echo getReviews($options);
 
 > **HINT**: Use .quote in you CSS to style the output
 
-###### Copyright 2019 Igor Gaffling
+###### Copyright 2019-2020 Igor Gaffling
