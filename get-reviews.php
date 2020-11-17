@@ -77,8 +77,6 @@ function getReviews($option) {
     $reviews  = $reviews[6][52][0];                                                                                                                    /* POSITION OF REVIEWS */
   }              
 
-  
-  // Open reviews.json   
   $fp = fopen('api/reviews.json', 'w');
                                                                                                                                 /* END CHECK */
   $return = '';       
@@ -105,17 +103,7 @@ function getReviews($option) {
           isset($option['show_age_of_the_review']) and $option['show_age_of_the_review'] == true) $return .= '<small> &mdash; </small>';               /* PRINT — */
       if (isset($option['show_age_of_the_review']) and $option['show_age_of_the_review'] == true) $return .= '<small>'.$review[1].' </small>';         /* AGE */
       if (isset($option['show_rule_after_review']) and $option['show_rule_after_review'] == true) $return .= '<hr size="1">';                          /* RULER */
-      // fwrite($fp, json_encode($review[3]));
-      // array_push($array, $review[3]);
-      // echo $return;
-      // $array[] = array(
-      //     'data' => $review[3],
-      // );
-      
-      // echo $array[1];
-      // var_dump($array);
-      // var_dump($review);
-      // echo $review[6];
+
       $array[] = array(
         'name' => $review[0][1],
         'stars' => $stars,
@@ -123,9 +111,7 @@ function getReviews($option) {
         'age' => $review[1],
         'text' => $review[3],
       );
-      // var_dump($array);
     } 
-    // echo $return;   
     fwrite($fp, json_encode($array));
     fclose($fp);      
                                                                                                                                                 /* END LOOP */
@@ -134,4 +120,4 @@ function getReviews($option) {
   return $return;                                                                                                                                      /* RETURN DATA */
 }                                                                                                                                                      /* END OF FUNCTION */
 
-// close reviews.json
+
