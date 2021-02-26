@@ -29,4 +29,4 @@ echo getReviews($options);
 
 > HINT: Use .quote in you CSS to style the output
 
-###### Copyright 2019-2020 Igor Gaffling
+###### Copyright 2019-2021 Igor Gaffling
