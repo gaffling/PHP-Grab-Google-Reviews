@@ -48,8 +48,8 @@ $options = array(
   'show_age_of_the_review' => true,  // true = show the age of each review
   'show_txt_of_the_review' => true,  // true = show the text of each review
   'show_author_of_reviews' => true,  // true = show the author of each review
+  'show_not_more_than_max' => 0,     // (0-8) only show first max reviews
   'show_authors_avatar_sm' => true,  // true = show the author's avatar 100x100 rounded
-  
 );
 
 /* -------------------- */
@@ -82,7 +82,9 @@ function getReviews($option) {
     $return .= '<div class="quote">';                                                                                                                  /* OPEN DIV */
     if (isset($option['show_cname_as_headline']) and $option['show_cname_as_headline'] == true) $return .= '<strong>'.$customer.'</strong><br>';       /* CUSTOMER */
     if (isset($option['show_rule_after_review']) and $option['show_rule_after_review'] == true) $return .= '<hr size="1">';                            /* RULER */
+    $n = 0;
     foreach ($reviews as $review) {                                                                                                                    /* START LOOP */
+      if (isset($option['show_not_more_than_max']) and $option['show_not_more_than_max'] > 0 and $n >= $option['show_not_more_than_max']) continue;    /* CHECK MAX NUMBER */
       if (isset($option['show_only_if_with_text']) and $option['show_only_if_with_text'] == true and empty($review[3])) continue;                      /* CHECK TEXT */
       if (isset($option['show_only_if_greater_x']) and $review[4] <= $option['show_only_if_greater_x']) continue;                                      /* CHECK RATING */
       for ($i=1; $i <= $review[4]; ++$i) $return .= '⭐';                                                                                              /* RATING */
@@ -97,6 +99,7 @@ function getReviews($option) {
           isset($option['show_age_of_the_review']) and $option['show_age_of_the_review'] == true) $return .= '<small> &mdash; </small>';               /* PRINT — */
       if (isset($option['show_age_of_the_review']) and $option['show_age_of_the_review'] == true) $return .= '<small>'.$review[1].' </small>';         /* AGE */
       if (isset($option['show_rule_after_review']) and $option['show_rule_after_review'] == true) $return .= '<hr size="1">';                          /* RULER */
+      $n++;
     }                                                                                                                                                  /* END LOOP */
     $return .= '</div>';                                                                                                                               /* CLOSE DIV */
   }                                                                                                                                                    /* CHECK REVIEWS */
