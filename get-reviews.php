@@ -83,7 +83,7 @@ function getReviews($option) {
     if (isset($option['show_rule_after_review']) and $option['show_rule_after_review'] == true) $return .= '<hr size="1">';                            /* RULER */
     $n = 0;
     foreach ($reviews as $review) {                                                                                                                    /* START LOOP */
-      if (isset($option['show_not_more_than_max']) and $option['show_not_more_than_max'] > 0 and $n >= $option['show_not_more_than_max'] continue;     /* CHECK MAX NUMBER */
+      if (isset($option['show_not_more_than_max']) and $option['show_not_more_than_max'] > 0 and $n >= $option['show_not_more_than_max']) continue;    /* CHECK MAX NUMBER */
       if (isset($option['show_only_if_with_text']) and $option['show_only_if_with_text'] == true and empty($review[3])) continue;                      /* CHECK TEXT */
       if (isset($option['show_only_if_greater_x']) and $review[4] <= $option['show_only_if_greater_x']) continue;                                      /* CHECK RATING */
       for ($i=1; $i <= $review[4]; ++$i) $return .= '⭐';                                                                                              /* RATING */
