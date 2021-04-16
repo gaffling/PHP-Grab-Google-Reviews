@@ -48,6 +48,8 @@ $options = array(
   'show_age_of_the_review' => true,  // true = show the age of each review
   'show_txt_of_the_review' => true,  // true = show the text of each review
   'show_author_of_reviews' => true,  // true = show the author of each review
+  'show_authors_avatar_sm' => true,  // true = show the author's avatar 100x100 rounded
+  
 );
 
 /* -------------------- */
@@ -88,6 +90,9 @@ function getReviews($option) {
       $return .= '<br>';                                                                                                                               /* NEWLINE */
       if (isset($option['show_txt_of_the_review']) and $option['show_txt_of_the_review'] == true) $return .= $review[3].'<br>';                        /* TEXT */
       if (isset($option['show_age_of_the_review']) and $option['show_age_of_the_review'] == true) $return .= '<small>'.$review[0][1].' </small>';      /* AUTHOR */
+      if (isset($option['show_author_of_reviews']) and $option['show_author_of_reviews'] == true) and                                                             
+          isset($option['show_authors_avatar_sm']) and $option['show_authors_avatar_sm'] == true) $return .= 
+                                             '<div class="review-avatar"><img src="'.str_replace('-rp','-rp-br25-w100-h100',$review[0][2]).'"></div>'; /* AVATAR */
       if (isset($option['show_age_of_the_review']) and $option['show_age_of_the_review'] == true and                                                   /* IF AUTHOR & AGE */
           isset($option['show_age_of_the_review']) and $option['show_age_of_the_review'] == true) $return .= '<small> &mdash; </small>';               /* PRINT — */
       if (isset($option['show_age_of_the_review']) and $option['show_age_of_the_review'] == true) $return .= '<small>'.$review[1].' </small>';         /* AGE */
