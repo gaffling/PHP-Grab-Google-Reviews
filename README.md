@@ -9,7 +9,7 @@ How to get the needed Google API Key:
   - and follow the easy explaned steps
 
 How to find the needed Placec ID:
-  - use: [https://developers.google.com/maps/documentation/places/web-service/place-id]
+  - use: https://developers.google.com/maps/documentation/places/web-service/place-id
   - and do a search for the wanted business name
 
 Parameter
@@ -18,8 +18,8 @@ Parameter
 ```PHP
 $options = array(
   'googlemaps_free_apikey' => '',       // Google API Key
-  'google_maps_review_cid' => 'ChIJHegKoJUfyUwRjMxaCcviZDA',       // Google Placec ID of the Business
-  'cache_data_xdays_local' => 30,       // every x day the reviews are loaded from google (save API traffic)
+  'google_maps_review_cid' => 'ChIJHegKoJUfyUwRjMxaCcviZDA', // Google Placec ID
+  'cache_data_xdays_local' => 30,       // every x day the reviews are loaded from google (save traffic)
   'your_language_for_tran' => 'en',     // give you language for auto translate reviews
   'show_not_more_than_max' => 5,        // (0-5) only show first x reviews
   'show_only_if_with_text' => false,    // true = show only reviews that have text
