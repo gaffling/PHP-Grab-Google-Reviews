@@ -19,7 +19,7 @@ Parameter
 $options = array(
   'googlemaps_free_apikey' => '',       // Google API Key
   'google_maps_review_cid' => 'ChIJHegKoJUfyUwRjMxaCcviZDA', // Google Placec ID
-  'cache_data_xdays_local' => 30,       // every x day the reviews are loaded from google (save traffic)
+  'cache_data_xdays_local' => 30,       // every x day the reviews are loaded from google
   'your_language_for_tran' => 'en',     // give you language for auto translate reviews
   'show_not_more_than_max' => 5,        // (0-5) only show first x reviews
   'show_only_if_with_text' => false,    // true = show only reviews that have text
@@ -33,7 +33,7 @@ $options = array(
   'show_author_of_reviews' => true,     // true = show the author of each review
   'show_age_of_the_review' => true,     // true = show the age of each review
   'dateformat_for_the_age' => 'Y.m.d',  // see https://www.php.net/manual/en/datetime.format.php
-  'show_rule_after_review' => true,     // false = don't show <hr> Tag after each review (and before first)
+  'show_rule_after_review' => true,     // false = don't show <hr> Tag after/before each review
   'add_schemaorg_metadata' => true,     // add schemo.org data to loop back your rating to SERP
 );
 echo getReviews($options);
