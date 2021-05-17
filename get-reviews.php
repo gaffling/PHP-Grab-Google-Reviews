@@ -75,21 +75,35 @@ echo getReviews($options);
 
 
 function getReviews($option) {
-  if (file_exists('reviews.json') and strtotime(filemtime('reviews.json')) < strtotime('-30 days')) {
+  if (file_exists('reviews.json') and strtotime(filemtime('reviews.json')) < strtotime('-'.$option['cache_data_xdays_local'].' days')) {
     $result = file_get_contents('reviews.json');
   } else {
-    $ch = curl_init();
-    $url = 'https://maps.googleapis.com/maps/api/place/details/json?place_id=';
-    curl_setopt($ch, CURLOPT_URL, $url.$option['google_maps_review_cid'].'&key='.$option['googlemaps_free_apikey']);
-    if ( isset($option['your_language_for_tran']) and !empty($option['your_language_for_tran']) ) {
-      curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept-Language: '.$option['your_language_for_tran']));
+    $url = 'https://maps.googleapis.com/maps/api/place/details/json?place_id='.$option['google_maps_review_cid'].'&key='.$option['googlemaps_free_apikey'];
+    if (function_exists('curl_version')) {
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, $url);
+      if ( isset($option['your_language_for_tran']) and !empty($option['your_language_for_tran']) ) {
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept-Language: '.$option['your_language_for_tran']));
+      }
+      curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36');
+      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      $result = curl_exec($ch);
+      curl_close($ch);
+    } else {
+      $arrContextOptions=array(
+        'ssl' => array(
+          'verify_peer' => false,
+          'verify_peer_name' => false,
+        ),
+        'http' => array(
+          'method' => 'GET',
+          'header' => 'Accept-language: '.$option['your_language_for_tran']."\r\n" .
+          "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36\r\n"
+        )
+      );  
+      $result = file_get_contents($url, false, stream_context_create($arrContextOptions));
     }
-    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36');
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $result = curl_exec($ch);
-    curl_close($ch);
-
     $fp = fopen('reviews.json', 'w');
     fwrite($fp, $result);
     fclose($fp);
