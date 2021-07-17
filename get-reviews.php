@@ -129,7 +129,7 @@ function getReviews($option) {
     }
     if (isset($option['add_schemaorg_metadata']) and $option['add_schemaorg_metadata'] == true) {
       $html .= '<itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><meta itemprop="worstRating" content="1"/><meta itemprop="bestRating" content="5"/>';
-      $html .= '<meta itemprop="ratingValue" content="'.$data['result']['rating'].'"/>'
+      $html .= '<meta itemprop="ratingValue" content="'.$data['result']['rating'].'"/>';
     }
     if (isset($option['show_rule_after_review']) and $option['show_rule_after_review'] == true) $html .= '<hr size="1">';
     foreach ($reviews as $key => $review) {
