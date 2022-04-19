@@ -7,7 +7,7 @@
 
 **This is a tiny but usefull way to grab the 5 most relevant reviews from Google with cURL and with the use of an API Key**
 
-How to get the needed Google API Key:
+How to get the needed Google Places API Key:
   - use: https://developers.google.com/maps/documentation/places/web-service/get-api-key
   - and follow the easy explaned steps
 
