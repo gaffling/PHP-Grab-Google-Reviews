@@ -41,4 +41,4 @@ echo getReviews($options);
 
 > HINT: Use .review and .review .avatar in you CSS to style the output
 
-###### Copyright 2019-2021 Igor Gaffling
+###### Copyright 2019-2022 Igor Gaffling
