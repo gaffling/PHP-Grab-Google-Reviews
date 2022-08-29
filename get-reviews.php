@@ -75,7 +75,7 @@ echo getReviews($options);
 
 
 function getReviews($option) {
-  if (file_exists('reviews.json') and strtotime(filemtime('reviews.json')) < strtotime('-'.$option['cache_data_xdays_local'].' days')) {
+  if ( file_exists('reviews.json') && (filemtime('reviews.json') > strtotime('-'.$option['cache_data_xdays_local'].' days')) ) {
     $result = file_get_contents('reviews.json');
   } else {
     $url = 'https://maps.googleapis.com/maps/api/place/details/json?place_id='.$option['google_maps_review_cid'].'&key='.$option['googlemaps_free_apikey'];
