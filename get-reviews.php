@@ -22,6 +22,7 @@ Parameter
 $options = array(
   'googlemaps_free_apikey' => '',       // Google API Key
   'google_maps_review_cid' => 'ChIJHegKoJUfyUwRjMxaCcviZDA',       // Google Placec ID of the Business
+  'google_reviews_sorting' => 'most_relevant',       // reviews are sorted by relevance (default), or in chronological order (most_relevant/newest)
   'cache_data_xdays_local' => 30,       // every x day the reviews are loaded from google (save API traffic)
   'your_language_for_tran' => 'en',     // give you language for auto translate reviews
   'show_not_more_than_max' => 5,        // (0-5) only show first x reviews
@@ -51,6 +52,7 @@ echo getReviews($options);
 $options = array(
   'googlemaps_free_apikey' => '',       // Google API Key
   'google_maps_review_cid' => 'ChIJHegKoJUfyUwRjMxaCcviZDA', // Google Placec ID of the Business
+  'google_reviews_sorting' => 'most_relevant',  // reviews are sorted by relevance (default), or in chronological order (most_relevant/newest)
   'cache_data_xdays_local' => 30,       // every x day the reviews are loaded from google (save API traffic)
   'your_language_for_tran' => 'en',     // give you language for auto translate reviews
   'show_not_more_than_max' => 5,        // (0-5) only show first x reviews
@@ -78,7 +80,7 @@ function getReviews($option) {
   if ( file_exists('reviews.json') && (filemtime('reviews.json') > strtotime('-'.$option['cache_data_xdays_local'].' days')) ) {
     $result = file_get_contents('reviews.json');
   } else {
-    $url = 'https://maps.googleapis.com/maps/api/place/details/json?place_id='.$option['google_maps_review_cid'].'&key='.$option['googlemaps_free_apikey'];
+    $url = 'https://maps.googleapis.com/maps/api/place/details/json?place_id='.$option['google_maps_review_cid'].'&reviews_sort='.$option['google_reviews_sorting'].'&key='.$option['googlemaps_free_apikey'];
     if (function_exists('curl_version')) {
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $url);
